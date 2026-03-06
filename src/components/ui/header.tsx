@@ -1,14 +1,26 @@
+import { Link } from "react-router";
+import { Field, FieldLabel } from "./field";
 import { Input } from "./input";
+import { ShoppingCartIcon } from "../icons/heroicons-shopping-cart";
+import { ChatBubbleBottomCenterIcon } from "../icons/heroicons-chat-bubble-bottom-center";
 
 export default function Header() {
   return (
-    <header className="border">
-      <form action="" method="post">
-        <label htmlFor="search" className="hidden">
+    <header className="flex items-center justify-between gap-4 border px-4 py-4">
+      <Field>
+        <FieldLabel htmlFor="search" className="hidden">
           Search
-        </label>
+        </FieldLabel>
         <Input placeholder="Search" className="h-10" />
-      </form>
+      </Field>
+      <div className="flex items-center gap-4">
+        <Link to={"/"}>
+          <ChatBubbleBottomCenterIcon />
+        </Link>
+        <Link to={"/"}>
+          <ShoppingCartIcon />
+        </Link>
+      </div>
     </header>
   );
 }
