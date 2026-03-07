@@ -10,7 +10,7 @@ export default function Nav() {
 
   return (
     <nav>
-      <ul className="flex justify-around items-center border py-4">
+      <ul className="flex items-center justify-around border py-4">
         <li>
           <NavLink className={"flex flex-col items-center gap-2"} to={"/"}>
             <Home20SolidIcon />
@@ -18,21 +18,24 @@ export default function Nav() {
           </NavLink>
         </li>
         <li>
-          <NavLink className="flex flex-col items-center gap-2" to={"/product"}>
+          <NavLink className="flex flex-col items-center gap-2" to={"/review"}>
             <ChatBubbleBottomCenterTextIcon />
             <span>Review</span>
           </NavLink>
         </li>
         <li>
-          <NavLink className="flex flex-col items-center gap-2" to={"/"}>
+          <NavLink
+            className="flex flex-col items-center gap-2"
+            to={"/transaction"}
+          >
             <ClipboardDocumentListIcon />
             <span>Transaction</span>
           </NavLink>
         </li>
         <li>
-          <NavLink className="flex flex-col items-center gap-2" to={"/"}>
+          <NavLink className="flex flex-col items-center gap-2" to={"/account"}>
             <UserIcon />
-            <span>User</span>
+            <span>Account</span>
           </NavLink>
         </li>
       </ul>

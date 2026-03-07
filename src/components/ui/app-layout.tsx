@@ -6,7 +6,7 @@ function AppLayout() {
   return (
     <div className="flex h-screen flex-col justify-between">
       <Header />
-      <main className="flex-1 border-2 border-amber-800">
+      <main className="flex-1">
         <Outlet />
       </main>
       <Nav />
