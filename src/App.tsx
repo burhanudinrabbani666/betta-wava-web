@@ -24,6 +24,7 @@ export function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
+            {/* <Route path="/" element={<HomePage />} /> */}
             <Route path="/" element={<Dashboard />} />
             <Route path="/review" element={<Review />} />
             <Route path="/transaction" element={<Transaction />} />

@@ -1,10 +1,12 @@
+import type { Product } from "@/schema";
+
 export default async function getProducts() {
   try {
-    const response = await fetch("https://betta-wava.burhanudin.com/products");
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/products`);
 
-    const data = await response.json();
+    const products: Product[] = await response.json();
 
-    return data;
+    return products;
   } catch (error) {
     console.log(error);
   }
