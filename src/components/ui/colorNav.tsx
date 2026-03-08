@@ -20,7 +20,7 @@ function ColorNav() {
   const colorParams = searchParams.get("color");
 
   function handleSetColor(color: string) {
-    searchParams.set("color", color);
+    searchParams.set("color", color.toLowerCase());
     setSearchParams(searchParams);
   }
 
@@ -44,7 +44,9 @@ function ColorNav() {
             <span
               className={cn(
                 "border-b border-transparent px-2 py-2 font-semibold",
-                colorParams === color ? "border-lime-600 text-lime-600" : "",
+                colorParams === color.toLowerCase()
+                  ? "border-lime-600 text-lime-600"
+                  : "",
               )}
             >
               {color}

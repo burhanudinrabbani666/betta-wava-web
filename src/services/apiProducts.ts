@@ -1,9 +1,11 @@
 export default async function getProducts() {
-  const response = await fetch("/api/products");
+  try {
+    const response = await fetch("/api/products");
 
-  console.log(response);
+    const data = await response.json();
 
-  // const data = await response.json();
-
-  // return data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 }

@@ -1,6 +1,7 @@
 import ColorNav from "@/components/ui/colorNav";
 import Hero from "@/components/ui/hero";
 import VariantNav from "@/components/ui/variantNav";
+import ProductList from "@/features/products/productList";
 import getProducts from "@/services/apiProducts";
 
 function Dashboard() {
@@ -10,7 +11,7 @@ function Dashboard() {
       <Hero />
       <VariantNav />
       <ColorNav />
-      <div className="">Product list</div>
+      <ProductList />
     </div>
   );
 }
