@@ -6,7 +6,7 @@ import { ChatBubbleBottomCenterIcon } from "../icons/heroicons-chat-bubble-botto
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-between gap-4 border px-4 py-4">
+    <header className="flex items-center justify-between gap-4 bg-white p-2">
       <Field>
         <FieldLabel htmlFor="search" className="hidden">
           Search

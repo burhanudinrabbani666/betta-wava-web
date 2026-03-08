@@ -4,7 +4,7 @@ import Header from "./header";
 
 function AppLayout() {
   return (
-    <div className="flex max-h-screen flex-col justify-between">
+    <div className="flex h-screen flex-col justify-between">
       <Header />
       <main className="flex-1 overflow-scroll">
         <Outlet />

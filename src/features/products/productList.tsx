@@ -8,18 +8,25 @@ import {
 import useProducts from "./useProducts";
 import type { Product } from "@/schema";
 import { Link } from "react-router";
+import { Spinner } from "@/components/ui/spinner";
 
 function ProductList() {
   const { products, isPending, error } = useProducts();
 
-  if (isPending) return;
+  if (isPending) {
+    return (
+      <div className="flex items-center justify-center">
+        <Spinner />;
+      </div>
+    );
+  }
   if (error) return;
 
   return (
-    <div className="mx-2 grid grid-cols-2 gap-4">
+    <div className="flex flex-wrap items-center justify-between gap-3">
       {products.map((product: Product) => (
-        <Link to={`/product/${product.slug}`}>
-          <Card className="min-w-48 shadow-lg">
+        <Link key={product.id} to={`/product/${product.slug}`}>
+          <Card className="max-w-48 shadow-lg">
             <img
               src={product.thumbnailUrl}
               alt={product.name}

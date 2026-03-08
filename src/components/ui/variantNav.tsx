@@ -6,7 +6,7 @@ import { Card } from "./card";
 
 function VariantNav() {
   return (
-    <Card size="sm" className="m-3">
+    <Card size="sm">
       <div className="flex items-center justify-center gap-10">
         <Link to={"#"} className="flex flex-col items-center gap-1">
           <div className="rounded-full bg-gray-100 p-3">

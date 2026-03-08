@@ -7,11 +7,13 @@ import getProducts from "@/services/apiProducts";
 function Dashboard() {
   getProducts();
   return (
-    <div>
+    <div className="space-y-5">
       <Hero />
-      <VariantNav />
-      <ColorNav />
-      <ProductList />
+      <div className="mx-2 space-y-5">
+        <VariantNav />
+        <ColorNav />
+        <ProductList />
+      </div>
     </div>
   );
 }
