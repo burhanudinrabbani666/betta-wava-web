@@ -5,7 +5,7 @@ import { Heart20SolidIcon } from "../icons/heroicons-heart-20-solid";
 
 function VariantNav() {
   return (
-    <div className="m-3 flex items-center justify-center gap-10 rounded-2xl py-2">
+    <div className="m-3 flex items-center justify-center gap-10 rounded-xl border border-lime-300 py-3">
       <Link to={"#"} className="flex flex-col items-center gap-1">
         <div className="rounded-full bg-gray-100 p-3">
           <Star20SolidIcon fill="#EE0B0B" stroke="none" />

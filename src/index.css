@@ -128,11 +128,6 @@
   }
 }
 
-* {
-  font-weight: 200;
-  font-size: 0.9rem;
-}
-
 .active {
   color: var(--chart-4);
 }
