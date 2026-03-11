@@ -3,7 +3,7 @@ import Header from "./header";
 
 export default function Applayout() {
   return (
-    <div>
+    <div className="h-screen">
       <Header />
       <main>
         <Outlet />
