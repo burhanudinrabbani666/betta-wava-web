@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export function MenuRoundedIcon({
+export function UserIcon({
   size = 24,
   color = "currentColor",
   strokeWidth = 2,
@@ -25,7 +25,7 @@ export function MenuRoundedIcon({
       className={className}
       {...props}
     >
-      <path d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z" />
+      <path d="M15.75 6a3.75 3.75 0 1 1-7.5 0a3.75 3.75 0 0 1 7.5 0M4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.9 17.9 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632"/>
     </svg>
   );
 }

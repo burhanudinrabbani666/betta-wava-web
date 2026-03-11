@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import Applayout from "./components/applayout";
+import Applayout from "./components/ui/applayout";
 import Homepage from "./pages/homepage";
 
 export default function App() {
