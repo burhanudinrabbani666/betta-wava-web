@@ -6,7 +6,7 @@ import { MenuRoundedIcon } from "./icons/material-symbols-menu-rounded";
 
 export default function Navbar() {
   return (
-    <ul>
+    <ul className="flex items-center gap-3">
       <li>
         <button>
           <SearchIcon />
