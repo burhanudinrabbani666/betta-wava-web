@@ -7,7 +7,7 @@ import { ArrowLeftIcon } from "../icons/heroicons-arrow-left";
 import { cn } from "@/lib/utils";
 import { MagnifyingGlassIcon } from "../icons/heroicons-magnifying-glass";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { Carousel, CarouselContent, CarouselItem } from "./carousel";
 import { TrashIcon } from "../icons/heroicons-trash";
 import { XMarkIcon } from "../icons/heroicons-x-mark";
@@ -32,7 +32,7 @@ export default function Search() {
     handleSubmit,
     formState: { errors },
   } = useForm<HandleSearch>();
-  const { dispatch } = useHeader();
+  const { dispatch, searchOpen } = useHeader();
 
   const navigate = useNavigate();
 
@@ -51,7 +51,13 @@ export default function Search() {
   }
 
   return (
-    <div className="flex flex-col gap-6 px-4 py-2">
+    <div
+      className={cn(
+        "flex flex-col gap-6 px-4 py-2",
+        "absolute z-40 min-h-full w-full bg-neutral-50 transition-all duration-300 ease-out",
+        searchOpen ? "translate-x-0" : "translate-x-full",
+      )}
+    >
       <div className="flex w-full items-center justify-between gap-2">
         <Button
           size="sm"
