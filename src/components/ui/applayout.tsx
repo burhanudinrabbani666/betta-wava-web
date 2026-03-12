@@ -4,7 +4,7 @@ import { useHeader } from "@/context/header/useheader";
 import Search from "./search";
 
 export default function Applayout() {
-  const { dispatch, searchOpen, menuOpen } = useHeader();
+  const { searchOpen, menuOpen } = useHeader();
 
   return (
     <div className="relative h-screen text-sm">
