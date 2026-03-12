@@ -7,7 +7,7 @@ export default function Applayout() {
   const { dispatch, searchOpen, menuOpen } = useHeader();
 
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen text-sm">
       {searchOpen && <Search />}
       {!searchOpen && !menuOpen && (
         <>
