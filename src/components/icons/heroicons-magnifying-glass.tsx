@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export function MagnifyingGlassIcon({
-  size = 24,
+  size = 20,
   color = "currentColor",
   strokeWidth = 2,
   className,
@@ -25,7 +25,7 @@ export function MagnifyingGlassIcon({
       className={className}
       {...props}
     >
-      <path d="m21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607"/>
+      <path d="m21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607" />
     </svg>
   );
 }

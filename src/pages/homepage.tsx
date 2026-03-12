@@ -24,27 +24,24 @@ export default function Homepage() {
               <Card className="h-full rounded-none py-0">
                 <CardContent className="h-full px-0">
                   <div
-                    className="relative flex h-full flex-col justify-end bg-cover bg-top p-6"
+                    className="relative flex h-full flex-col justify-end bg-cover bg-center p-6"
                     style={{
                       backgroundImage: `url(/variant/${v.image}.jpg)`,
                     }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-transparent to-transparent to-5%"></div>
-                    <Card className="mb-10 border border-neutral-50/40 bg-neutral-900/40 text-white">
+                    <div className="absolute inset-0 bg-linear-to-b from-neutral-950/90 via-transparent to-transparent to-5%"></div>
+                    <Card className="mb-10 w-fit border border-neutral-50/40 bg-neutral-900/20 text-white">
                       <CardContent>
                         <div className="mb-4 space-y-1">
-                          <p className="text-4xl font-normal tracking-tighter">
+                          <p className="text-2xl font-normal tracking-tighter">
                             {v.title}
                           </p>
-                          <p className="text-sm font-light">{v.description}</p>
+                          <p className="text-xs font-light">{v.description}</p>
                         </div>
 
-                        <Link
-                          to={`/variant/${v.title.toLowerCase().replace(" ", "-")}`}
-                          className="border-b border-neutral-900 py-1"
-                        >
+                        <span className="border-b border-neutral-900 py-1 text-xs">
                           Explore Collection &rarr;
-                        </Link>
+                        </span>
                       </CardContent>
                     </Card>
                   </div>

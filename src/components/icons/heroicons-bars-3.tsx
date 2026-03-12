@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export function Bars3Icon({
-  size = 24,
+  size = 20,
   color = "currentColor",
   strokeWidth = 2,
   className,
@@ -25,7 +25,7 @@ export function Bars3Icon({
       className={className}
       {...props}
     >
-      <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+      <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
     </svg>
   );
 }
