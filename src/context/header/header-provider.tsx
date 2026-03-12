@@ -8,7 +8,7 @@ type IntialStateType = {
 
 export type ActionType = {
   type: string;
-  payload: string | undefined;
+  payload?: string;
 };
 
 const intialState: IntialStateType = {

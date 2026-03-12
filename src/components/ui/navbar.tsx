@@ -3,12 +3,15 @@ import { MagnifyingGlassIcon } from "../icons/heroicons-magnifying-glass";
 import { UserIcon } from "../icons/heroicons-user";
 import { ShoppingBagIcon } from "../icons/heroicons-shopping-bag";
 import { Bars3Icon } from "../icons/heroicons-bars-3";
+import { useHeader } from "@/context/header/useheader";
 
 export default function Navbar() {
+  const { dispatch } = useHeader();
+
   return (
     <ul className="flex items-center">
       <li className="px-4 py-2">
-        <button>
+        <button onClick={() => dispatch({ type: "searchToggle" })}>
           <MagnifyingGlassIcon />
         </button>
       </li>
@@ -26,7 +29,7 @@ export default function Navbar() {
       </NavLink>
 
       <li className="px-4 py-2">
-        <button>
+        <button onClick={() => dispatch({ type: "menuToggle" })}>
           <Bars3Icon />
         </button>
       </li>
