@@ -5,12 +5,9 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { variant } from "@/lib/utils";
-import { getProduct } from "@/module/common/api";
 import { Link } from "react-router";
 
 export default function Homepage() {
-  getProduct();
-
   return (
     <Carousel
       opts={{

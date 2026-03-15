@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const variant = [
   {
-    title: "Competition Grade",
+    title: "Competition",
     image: "comp-grade",
     description:
       "Show-quality betta with outstanding color, form, and symmetry.",
