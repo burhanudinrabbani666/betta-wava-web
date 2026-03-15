@@ -11,7 +11,7 @@ export default function Variant() {
   const { slug } = useParams();
 
   return (
-    <div className="h-screen">
+    <div className="h-screen overflow-scroll">
       <ul className="flex flex-wrap items-center justify-center gap-2">
         {Array.from({ length: 10 }).map((_, index) => (
           <li key={index} className="max-w-30 shadow-xs shadow-neutral-300">
