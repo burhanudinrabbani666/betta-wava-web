@@ -106,6 +106,7 @@ export default function Search() {
           <CarouselContent className="-ml-2">
             {trendingFish.map((fish) => (
               <CarouselItem
+                key={fish}
                 onClick={() => handleSearchRecomendatio(fish)}
                 className="basis-auto pl-4 text-center"
               >
@@ -128,6 +129,7 @@ export default function Search() {
           </Button>
         </div>
 
+        {/* Edit later */}
         <ul>
           <li className="flex items-center justify-between">
             <span>Bluerim</span>

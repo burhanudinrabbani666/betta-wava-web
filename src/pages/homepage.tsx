@@ -17,19 +17,18 @@ export default function Homepage() {
       orientation="vertical"
       className="h-screen w-full"
     >
-      <CarouselContent className="h-screen">
+      <CarouselContent className="mt-0 h-screen">
         {variant.map((v, index) => (
-          <CarouselItem key={index} className="-my-2 h-screen basis-full px-0">
+          <CarouselItem className="h-screen basis-full px-0 pt-0 pl-0">
             <Link to={`/variant/${v.title.toLowerCase().replace(" ", "-")}`}>
               <Card className="h-full rounded-none py-0">
-                <CardContent className="h-full px-0">
+                <CardContent key={index} className="h-full px-0">
                   <div
                     className="relative flex h-full flex-col justify-end bg-cover bg-center p-6"
                     style={{
                       backgroundImage: `url(/variant/${v.image}.jpg)`,
                     }}
                   >
-                    <div className="absolute inset-0 bg-linear-to-b from-neutral-950/90 via-transparent to-transparent to-5%"></div>
                     <Card className="mb-10 w-fit border border-neutral-50/40 bg-neutral-900/20 text-white">
                       <CardContent>
                         <div className="mb-4 space-y-1">

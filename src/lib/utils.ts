@@ -25,3 +25,21 @@ export const variant = [
       "Strong genetics betta, perfect for breeding and line development.",
   },
 ];
+
+export const colors = [
+  "Multicolor",
+  "Bluerim",
+  "Avatar",
+  "Two tone",
+  "Blue tone",
+  "Super Red",
+  "Royal Blue",
+  "Super Black",
+  "Super Yellow",
+  "Super White",
+  "Red Fccp",
+  "Yellow Fccp",
+  "Alien Green",
+  "Alien Blue",
+  "Alien Copper",
+];

@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import Applayout from "./components/ui/applayout";
 import Homepage from "./pages/homepage";
+import Variant from "./pages/variant";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
           <Route path="/member" element={<Homepage />} />
           <Route path="/cart" element={<Homepage />} />
           <Route path="/:productId" element={<Homepage />} />
+          <Route path="/variant/:slug" element={<Variant />} />
         </Route>
       </Routes>
     </BrowserRouter>
