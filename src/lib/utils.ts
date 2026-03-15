@@ -43,3 +43,9 @@ export const colors = [
   "Alien Blue",
   "Alien Copper",
 ];
+
+export const tagColor: Record<string, string> = {
+  competition: "bg-yellow-200",
+  gradea: "bg-red-200",
+  breeding: "bg-green-200",
+};
