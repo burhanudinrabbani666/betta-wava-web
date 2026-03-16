@@ -1,19 +1,23 @@
+import type { ProductsSchema } from "@/module/schema";
+
 import { useReducer } from "react";
 import { HeaderContext } from "./header-context";
 
 type IntialStateType = {
   searchOpen: boolean;
   menuOpen: boolean;
+  products: ProductsSchema;
 };
 
-export type ActionType = {
-  type: string;
-  payload?: string;
-};
+export type ActionType =
+  | { type: "searchToggle" }
+  | { type: "menuToggle" }
+  | { type: "products"; payload: ProductsSchema };
 
 const intialState: IntialStateType = {
   searchOpen: false,
   menuOpen: false,
+  products: [],
 };
 
 function reducer(state: IntialStateType, action: ActionType) {
@@ -24,6 +28,9 @@ function reducer(state: IntialStateType, action: ActionType) {
     case "menuToggle":
       return { ...state, menuOpen: !state.menuOpen };
 
+    case "products":
+      return { ...state, products: action.payload ?? [] };
+
     default:
       throw new Error("Unknown Action");
   }
@@ -31,10 +38,12 @@ function reducer(state: IntialStateType, action: ActionType) {
 
 export function HeaderProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, intialState);
-  const { searchOpen, menuOpen } = state;
+  const { searchOpen, menuOpen, products } = state;
 
   return (
-    <HeaderContext.Provider value={{ searchOpen, menuOpen, dispatch }}>
+    <HeaderContext.Provider
+      value={{ searchOpen, menuOpen, dispatch, products }}
+    >
       {children}
     </HeaderContext.Provider>
   );

@@ -1,7 +1,11 @@
+import { useParams } from "react-router";
+
+import useGetProductsByVariant from "@/module/products/useGetProducts";
+
 import ProductCard from "@/components/ui/product-card";
 import { Spinner } from "@/components/ui/spinner";
-import useGetProductsByVariant from "@/module/products/useGetProducts";
-import { useParams } from "react-router";
+
+// ----------------------------------------------------------------------------
 
 export default function Variant() {
   const { slug } = useParams();
@@ -13,9 +17,9 @@ export default function Variant() {
 
   return (
     <div className="h-screen overflow-scroll">
-      <ul className="flex flex-wrap items-center justify-center gap-2">
+      <ul className="flex flex-wrap items-center gap-4">
         {products?.map((product) => (
-          <ProductCard product={product} slug={slug} key={product.id} />
+          <ProductCard product={product} key={product.id} />
         ))}
       </ul>
     </div>

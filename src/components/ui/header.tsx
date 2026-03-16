@@ -9,10 +9,10 @@ export default function Header() {
   return (
     <div
       className={cn(
-        "flex w-full items-center justify-between px-4 py-2 text-white",
+        "absolute flex w-full items-center justify-between px-4 py-2 text-white",
         path.pathname !== "/"
-          ? "text-inherit backdrop-blur-md"
-          : "absolute top-0 z-10",
+          ? "sticky text-inherit backdrop-blur-sm"
+          : "top-0 z-10",
       )}
     >
       <Logo />
