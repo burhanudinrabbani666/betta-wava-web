@@ -5,6 +5,8 @@ import { HeaderContext } from "./header-context";
 
 export type ProductData = {
   id: string;
+  name: string;
+  thumbnailUrl: string;
   price: number;
   quantity: number;
 };

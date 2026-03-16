@@ -4,6 +4,7 @@ import Homepage from "./pages/homepage";
 import Variant from "./pages/variant";
 import Product from "./pages/product";
 import Login from "./components/ui/login";
+import Cart from "./pages/cart";
 
 export default function App() {
   return (
@@ -13,7 +14,7 @@ export default function App() {
           <Route index element={<Homepage />} />
           <Route path="/search" element={<Homepage />} />
           <Route path="/member" element={<Login />} />
-          <Route path="/cart" element={<Homepage />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/variant/:slug" element={<Variant />} />
         </Route>

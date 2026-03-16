@@ -13,14 +13,17 @@ import { Separator } from "@/components/ui/separator";
 import { ShoppingBag, Share2, RotateCcw, Shield } from "lucide-react";
 import { useState } from "react";
 import ItemCounter from "@/components/ui/item-counter";
+import type { ProductData } from "@/context/header/header-provider";
 
 export default function Product() {
   const { productId } = useParams();
   const [itemCount, setItemCount] = useState(1);
 
-  const { products } = useHeader();
+  const { products, dispatch } = useHeader();
 
   const product = products?.find((product) => product.id === productId);
+
+  //   const checkProduct = cartTemp?.products.find((product) => product.id === productId,);
 
   if (!product)
     return (
@@ -39,8 +42,20 @@ export default function Product() {
     setItemCount((count) => count - 1);
   }
 
-  function addToCart() {
-    const Product: Product = {};
+  function handleAddToCart() {
+    if (!product) return;
+
+    const { id, name, thumbnailUrl, price } = product;
+
+    const productToCart: ProductData = {
+      id,
+      name,
+      thumbnailUrl,
+      price,
+      quantity: itemCount,
+    };
+
+    dispatch({ type: "cart", payload: productToCart });
   }
 
   return (
@@ -139,6 +154,7 @@ export default function Product() {
             <Button
               className="h-12 w-full rounded-none bg-black text-xs tracking-widest text-white uppercase hover:bg-neutral-800"
               disabled={!isInStock}
+              onClick={handleAddToCart}
             >
               <ShoppingBag className="mr-2 h-4 w-4" />
               Add to Bag
