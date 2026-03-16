@@ -47,7 +47,7 @@ export default function Search() {
   return (
     <div
       className={cn(
-        "fixed inset-0 z-40 flex flex-col bg-neutral-50 transition-transform duration-300 ease-out",
+        "fixed inset-0 z-100 flex flex-col bg-neutral-50 transition-transform duration-300 ease-out",
         searchOpen ? "translate-x-0" : "translate-x-full",
       )}
     >

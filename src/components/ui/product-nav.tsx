@@ -11,7 +11,7 @@ export default function ProductNav() {
   return (
     <div
       className={cn(
-        "fixed inset-0 z-40 flex flex-col bg-white transition-transform duration-300 ease-out",
+        "fixed inset-0 z-100 flex flex-col bg-white transition-transform duration-300 ease-out",
         menuOpen ? "translate-x-0" : "translate-x-full",
       )}
     >

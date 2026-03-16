@@ -1,12 +1,52 @@
+import { type CarouselApi } from "@/components/ui/carousel";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
 import { variant } from "@/lib/utils";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
 export default function Homepage() {
+  const [api, setApi] = useState<CarouselApi>();
+
+  useEffect(() => {
+    if (!api) return;
+
+    // Mouse wheel scroll
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      if (e.deltaY > 0) {
+        api.scrollNext();
+      } else {
+        api.scrollPrev();
+      }
+    };
+
+    // Arrow key scroll
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        api.scrollNext();
+      }
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        api.scrollPrev();
+      }
+    };
+
+    const container = api.rootNode();
+    container.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Cleaning
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [api]);
+
   return (
     <Carousel
       opts={{
@@ -15,6 +55,7 @@ export default function Homepage() {
       }}
       orientation="vertical"
       className="h-svh w-full"
+      setApi={setApi}
     >
       <CarouselContent className="mt-0 h-svh">
         {variant.map((v, index) => (

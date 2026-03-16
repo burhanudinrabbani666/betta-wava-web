@@ -3,6 +3,7 @@ import Applayout from "./components/ui/applayout";
 import Homepage from "./pages/homepage";
 import Variant from "./pages/variant";
 import Product from "./pages/product";
+import Login from "./components/ui/login";
 
 export default function App() {
   return (
@@ -11,7 +12,7 @@ export default function App() {
         <Route element={<Applayout />}>
           <Route index element={<Homepage />} />
           <Route path="/search" element={<Homepage />} />
-          <Route path="/member" element={<Homepage />} />
+          <Route path="/member" element={<Login />} />
           <Route path="/cart" element={<Homepage />} />
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/variant/:slug" element={<Variant />} />

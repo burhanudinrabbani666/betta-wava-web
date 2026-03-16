@@ -13,7 +13,7 @@ export default function ProductCard({ product }: ProductCard) {
     // product-card.tsx
     <li
       key={product.id}
-      className="overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-sm transition-shadow hover:shadow-md"
+      className="overflow-hidden border border-neutral-100 bg-white shadow-sm transition-shadow hover:shadow-md"
     >
       <Link to={`/product/${product.id}`}>
         {/* Image */}
