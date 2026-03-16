@@ -9,7 +9,6 @@ import { MagnifyingGlassIcon } from "../icons/heroicons-magnifying-glass";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Carousel, CarouselContent, CarouselItem } from "./carousel";
-import { TrashIcon } from "../icons/heroicons-trash";
 import { XMarkIcon } from "../icons/heroicons-x-mark";
 
 type HandleSearch = {
@@ -33,35 +32,31 @@ export default function Search() {
     formState: { errors },
   } = useForm<HandleSearch>();
   const { dispatch, searchOpen } = useHeader();
-
   const navigate = useNavigate();
 
   const handleSearch: SubmitHandler<HandleSearch> = (data) => {
-    const { productName } = data;
-
-    dispatch({ type: "searchToggle" }); // Close the Search
-    navigate(`/search?q=${productName}`);
-    return;
+    dispatch({ type: "searchToggle" });
+    navigate(`/search?q=${data.productName}`);
   };
 
-  function handleSearchRecomendatio(product: string) {
-    dispatch({ type: "searchToggle" }); // Close the Search
+  function handleSearchRecommendation(product: string) {
+    dispatch({ type: "searchToggle" });
     navigate(`/search?q=${product}`);
-    return;
   }
 
   return (
     <div
       className={cn(
-        "flex flex-col gap-6 px-4 py-2",
-        "absolute z-40 min-h-full w-full bg-neutral-50 transition-all duration-300 ease-out",
+        "fixed inset-0 z-40 flex flex-col bg-neutral-50 transition-transform duration-300 ease-out",
         searchOpen ? "translate-x-0" : "translate-x-full",
       )}
     >
-      <div className="flex w-full items-center justify-between gap-2">
+      {/* Header */}
+      <div className="flex items-center gap-2 border-b border-neutral-200 px-3 py-3 sm:px-6">
         <Button
-          size="sm"
+          size="icon"
           variant="ghost"
+          className="shrink-0"
           onClick={() => dispatch({ type: "searchToggle" })}
         >
           <ArrowLeftIcon />
@@ -72,72 +67,91 @@ export default function Search() {
             method="post"
             onSubmit={handleSubmit(handleSearch)}
             className={cn(
-              "flex h-10 items-center rounded-xl border border-neutral-200",
-              formFocus && "focus: focus: outline-1 outline-gray-300",
+              "flex h-10 items-center rounded-xl border border-neutral-200 bg-white transition-all",
+              formFocus && "border-neutral-400 ring-1 ring-neutral-300",
             )}
           >
             <Button
               size="sm"
               variant="ghost"
-              className={cn(formFocus ? "hidden" : "", "text-gray-400")}
+              className="text-neutral-400"
               type="submit"
             >
               <MagnifyingGlassIcon size={15} />
             </Button>
             <Input
               {...register("productName", { required: true })}
-              placeholder="Search Product"
-              className="border-0 text-sm focus-visible:ring-0"
+              placeholder="Search products..."
+              className="border-0 bg-transparent text-sm focus-visible:ring-0"
               type="text"
               onFocus={() => setFormFocus(true)}
               onBlur={() => setFormFocus(false)}
             />
           </form>
           {errors.productName && (
-            <span className="absolute text-xs text-red-600">Insert query</span>
+            <span className="absolute -bottom-5 left-0 text-xs text-red-500">
+              Please enter a search term
+            </span>
           )}
         </div>
       </div>
 
-      {/* Search Recomendation */}
-      <div className="flex flex-col gap-4">
-        <span>Trending</span>
-        <Carousel opts={{ align: "start", loop: true }}>
-          <CarouselContent className="-ml-2">
-            {trendingFish.map((fish) => (
-              <CarouselItem
-                key={fish}
-                onClick={() => handleSearchRecomendatio(fish)}
-                className="basis-auto pl-4 text-center"
-              >
-                <div className="flex w-fit items-center justify-center gap-1 rounded-xl border border-neutral-200 p-2 text-xs">
-                  <MagnifyingGlassIcon size={14} />
-                  <span className="">{fish}</span>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
+      {/* Scrollable body */}
+      <div className="flex-1 space-y-8 overflow-y-auto px-4 py-6 sm:px-6">
+        {/* Trending */}
+        <section className="space-y-3">
+          <p className="text-xs font-semibold tracking-widest text-neutral-400 uppercase">
+            Trending
+          </p>
+          <Carousel opts={{ align: "start", loop: true }}>
+            <CarouselContent className="-ml-2">
+              {trendingFish.map((fish) => (
+                <CarouselItem
+                  key={fish}
+                  onClick={() => handleSearchRecommendation(fish)}
+                  className="basis-auto cursor-pointer pl-2"
+                >
+                  <div className="flex items-center gap-1.5 rounded-full border border-neutral-200 bg-white px-3 py-1.5 text-xs text-neutral-700 transition-colors hover:border-neutral-400 hover:bg-neutral-100">
+                    <MagnifyingGlassIcon size={12} />
+                    <span>{fish}</span>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </section>
 
-      {/* Search History */}
-      <div className="flex flex-col gap-4">
-        <div className="flex items-center justify-between border-b border-neutral-200 pb-2">
-          <span>Search History</span>
-          <Button variant="ghost">
-            <TrashIcon />
-          </Button>
-        </div>
-
-        {/* Edit later */}
-        <ul>
-          <li className="flex items-center justify-between">
-            <span>Bluerim</span>
-            <Button variant="ghost">
-              <XMarkIcon />
+        {/* Search History */}
+        <section className="space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-semibold tracking-widest text-neutral-400 uppercase">
+              Recent
+            </p>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-auto p-0 text-xs text-neutral-400 hover:text-red-500"
+            >
+              Clear all
             </Button>
-          </li>
-        </ul>
+          </div>
+
+          <ul className="divide-y divide-neutral-100">
+            <li className="flex items-center justify-between py-2.5">
+              <div className="flex items-center gap-3 text-sm text-neutral-700">
+                <MagnifyingGlassIcon size={14} className="text-neutral-400" />
+                <span>Bluerim</span>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-7 w-7 text-neutral-400 hover:text-red-500"
+              >
+                <XMarkIcon />
+              </Button>
+            </li>
+          </ul>
+        </section>
       </div>
     </div>
   );

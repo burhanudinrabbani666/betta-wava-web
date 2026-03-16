@@ -17,7 +17,7 @@ export default function ProductCard({ product }: ProductCard) {
     >
       <Link to={`/product/${product.id}`}>
         {/* Image */}
-        <div className="aspect-[3/4] w-full overflow-hidden bg-neutral-100">
+        <div className="aspect-3/4 w-full overflow-hidden bg-neutral-100">
           <img
             src={product.thumbnailUrl}
             alt={product.name}
