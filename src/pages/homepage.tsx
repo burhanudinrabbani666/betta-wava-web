@@ -15,37 +15,38 @@ export default function Homepage() {
         loop: true,
       }}
       orientation="vertical"
-      className="h-screen w-full"
+      className="h-svh w-full"
     >
-      <CarouselContent className="mt-0 h-screen">
+      <CarouselContent className="mt-0 h-svh">
         {variant.map((v, index) => (
-          <CarouselItem className="h-screen basis-full px-0 pt-0 pl-0">
+          <CarouselItem key={index} className="h-svh basis-full p-0">
             <Link to={`/variant/${v.title.toLowerCase().replace(" ", "-")}`}>
-              <Card className="h-full rounded-none py-0">
-                <CardContent key={index} className="h-full px-0">
-                  <div
-                    className="relative flex h-full flex-col justify-end bg-cover bg-center p-6"
-                    style={{
-                      backgroundImage: `url(/variant/${v.image}.jpg)`,
-                    }}
-                  >
-                    <Card className="mb-10 w-fit border border-neutral-50/40 bg-neutral-900/20 text-white">
-                      <CardContent>
-                        <div className="mb-4 space-y-1">
-                          <p className="text-2xl font-normal tracking-tighter">
-                            {v.title}
-                          </p>
-                          <p className="text-xs font-light">{v.description}</p>
-                        </div>
+              <div
+                className="relative flex h-svh flex-col justify-end bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(/variant/${v.image}.jpg)`,
+                }}
+              >
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
 
-                        <span className="border-b border-neutral-900 py-1 text-xs">
-                          Explore Collection &rarr;
-                        </span>
-                      </CardContent>
-                    </Card>
+                {/* Content */}
+                <div className="relative z-10 p-4 pb-16 sm:p-8 sm:pb-20 md:p-12 md:pb-24">
+                  <div className="max-w-sm space-y-3 sm:max-w-md">
+                    <p className="text-3xl font-light tracking-tight text-white sm:text-4xl md:text-5xl">
+                      {v.title}
+                    </p>
+                    <p className="text-xs leading-relaxed font-light text-white/80 sm:text-sm">
+                      {v.description}
+                    </p>
+                    <div className="pt-2">
+                      <span className="inline-block border-b border-white/60 pb-0.5 text-xs tracking-widest text-white uppercase transition-colors hover:border-white sm:text-sm">
+                        Explore Collection &rarr;
+                      </span>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </Link>
           </CarouselItem>
         ))}

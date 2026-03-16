@@ -5,14 +5,15 @@ import { cn } from "@/lib/utils";
 
 export default function Header() {
   const path = useLocation();
+  const isHome = path.pathname === "/";
 
   return (
     <div
       className={cn(
-        "absolute flex w-full items-center justify-between px-4 py-2 text-white",
-        path.pathname !== "/"
-          ? "sticky text-inherit backdrop-blur-sm"
-          : "top-0 z-10",
+        "flex w-full items-center justify-between px-4 py-2",
+        isHome
+          ? "absolute top-0 z-10 text-white"
+          : "sticky top-0 z-50 border-b border-neutral-100 bg-white/80 text-inherit backdrop-blur-sm",
       )}
     >
       <Logo />

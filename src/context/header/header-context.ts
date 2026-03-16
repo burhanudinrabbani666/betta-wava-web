@@ -6,7 +6,7 @@ type HeaderContextType = {
   searchOpen: boolean;
   menuOpen: boolean;
   dispatch: React.Dispatch<ActionType>;
-  products: ProductsSchema;
+  products: ProductsSchema | undefined;
 };
 
 export const HeaderContext = createContext<HeaderContextType | null>(null);

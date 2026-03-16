@@ -6,13 +6,13 @@ import { HeaderContext } from "./header-context";
 type IntialStateType = {
   searchOpen: boolean;
   menuOpen: boolean;
-  products: ProductsSchema;
+  products: ProductsSchema | undefined;
 };
 
 export type ActionType =
   | { type: "searchToggle" }
   | { type: "menuToggle" }
-  | { type: "products"; payload: ProductsSchema };
+  | { type: "products"; payload: ProductsSchema | undefined };
 
 const intialState: IntialStateType = {
   searchOpen: false,
