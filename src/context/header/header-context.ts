@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { ActionType } from "./header-provider";
+import type { ActionType, CartTemp } from "./header-provider";
 import type { ProductsSchema } from "@/module/schema";
 
 type HeaderContextType = {
@@ -7,6 +7,7 @@ type HeaderContextType = {
   menuOpen: boolean;
   dispatch: React.Dispatch<ActionType>;
   products: ProductsSchema | undefined;
+  cartTemp: CartTemp | undefined;
 };
 
 export const HeaderContext = createContext<HeaderContextType | null>(null);

@@ -22,13 +22,6 @@ export default function Product() {
 
   const product = products?.find((product) => product.id === productId);
 
-  function handleInc() {
-    setItemCount((count) => count + 1);
-  }
-  function handleDec() {
-    setItemCount((count) => count - 1);
-  }
-
   if (!product)
     return (
       <div className="text-muted-foreground flex h-screen items-center justify-center text-sm tracking-widest uppercase">
@@ -37,6 +30,18 @@ export default function Product() {
     );
 
   const isInStock = product.stockLevel > 0;
+
+  function handleInc() {
+    setItemCount((count) => count + 1);
+  }
+
+  function handleDec() {
+    setItemCount((count) => count - 1);
+  }
+
+  function addToCart() {
+    const Product: Product = {};
+  }
 
   return (
     <div className="min-h-screen bg-white font-sans">
@@ -126,6 +131,7 @@ export default function Product() {
             count={itemCount}
             onIncrement={handleInc}
             onDecrement={handleDec}
+            stockLevel={product.stockLevel}
           />
 
           {/* Actions */}
