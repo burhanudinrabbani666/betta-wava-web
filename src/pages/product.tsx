@@ -10,16 +10,24 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ShoppingBag, Heart, Share2, RotateCcw, Shield } from "lucide-react";
+import { ShoppingBag, Share2, RotateCcw, Shield } from "lucide-react";
 import { useState } from "react";
+import ItemCounter from "@/components/ui/item-counter";
 
 export default function Product() {
   const { productId } = useParams();
-  const [wishlist, setWishlist] = useState(false);
+  const [itemCount, setItemCount] = useState(1);
 
   const { products } = useHeader();
 
   const product = products?.find((product) => product.id === productId);
+
+  function handleInc() {
+    setItemCount((count) => count + 1);
+  }
+  function handleDec() {
+    setItemCount((count) => count - 1);
+  }
 
   if (!product)
     return (
@@ -113,6 +121,13 @@ export default function Product() {
             </span>
           </div>
 
+          {/*  */}
+          <ItemCounter
+            count={itemCount}
+            onIncrement={handleInc}
+            onDecrement={handleDec}
+          />
+
           {/* Actions */}
           <div className="flex flex-col gap-3">
             <Button
@@ -121,17 +136,6 @@ export default function Product() {
             >
               <ShoppingBag className="mr-2 h-4 w-4" />
               Add to Bag
-            </Button>
-
-            <Button
-              variant="outline"
-              className="h-12 w-full rounded-none border-black text-xs tracking-widest uppercase"
-              onClick={() => setWishlist(!wishlist)}
-            >
-              <Heart
-                className={`mr-2 h-4 w-4 transition-all ${wishlist ? "fill-black" : ""}`}
-              />
-              {wishlist ? "Wishlisted" : "Add to Wishlist"}
             </Button>
           </div>
 
