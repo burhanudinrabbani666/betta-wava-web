@@ -5,24 +5,38 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const variant = [
+export const variant: {
+  path: string;
+  title: string;
+  image: string;
+  description: string;
+}[] = [
   {
+    path: "/variant/competition",
     title: "Competition",
     image: "comp-grade",
     description:
       "Show-quality betta with outstanding color, form, and symmetry.",
   },
   {
+    path: "/variant/grade-a",
     title: "Grade A",
     image: "grade-a",
     description:
       "Beautiful and healthy betta, perfect for collectors and hobbyists.",
   },
   {
+    path: "/variant/breeding",
     title: "Breeding",
     image: "breeding",
     description:
       "Strong genetics betta, perfect for breeding and line development.",
+  },
+  {
+    path: "/products",
+    title: "All products",
+    image: "products",
+    description: "See all Beutifull betta already for adopt...",
   },
 ];
 

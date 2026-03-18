@@ -60,7 +60,7 @@ export default function Homepage() {
       <CarouselContent className="mt-0 h-svh">
         {variant.map((v, index) => (
           <CarouselItem key={index} className="h-svh basis-full p-0">
-            <Link to={`/variant/${v.title.toLowerCase().replace(" ", "-")}`}>
+            <Link to={v.path}>
               <div
                 className="relative flex h-svh flex-col justify-end bg-cover bg-center"
                 style={{
