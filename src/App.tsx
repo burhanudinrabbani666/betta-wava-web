@@ -14,11 +14,11 @@ export default function App() {
         <Route element={<Applayout />}>
           <Route index element={<Homepage />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/search" element={<Homepage />} />
           <Route path="/member" element={<Login />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/variant/:slug" element={<Variant />} />
+          {/* <Route path="/search" element={<Homepage />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

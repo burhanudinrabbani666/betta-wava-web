@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import type { ActionType, CartTemp } from "./header-provider";
 import type { ProductsSchema } from "@/module/schema";
+import type { ActionType, CartTemp } from "../schema";
 
 type HeaderContextType = {
   searchOpen: boolean;
