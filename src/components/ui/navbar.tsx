@@ -4,34 +4,43 @@ import { UserIcon } from "../icons/heroicons-user";
 import { ShoppingBagIcon } from "../icons/heroicons-shopping-bag";
 import { Bars3Icon } from "../icons/heroicons-bars-3";
 import { useHeader } from "@/context/header/useheader";
+import { Button } from "@/button";
 
 export default function Navbar() {
   const { dispatch } = useHeader();
 
   return (
     <ul className="flex items-center">
-      <li className="px-4 py-2">
-        <button onClick={() => dispatch({ type: "searchToggle" })}>
+      <li>
+        <Button
+          className="px-4 py-2"
+          variant="ghost"
+          onClick={() => dispatch({ type: "searchToggle" })}
+        >
           <MagnifyingGlassIcon />
-        </button>
+        </Button>
       </li>
 
-      <NavLink to={"/member"} className="px-4 py-2">
-        <button>
+      <NavLink to={"/member"}>
+        <Button className="px-4 py-2" variant="ghost">
           <UserIcon />
-        </button>
+        </Button>
       </NavLink>
 
-      <NavLink to={"/cart"} className="px-4 py-2">
-        <button>
+      <NavLink to={"/cart"}>
+        <Button className="px-4 py-2" variant="ghost">
           <ShoppingBagIcon />
-        </button>
+        </Button>
       </NavLink>
 
-      <li className="px-4 py-2">
-        <button onClick={() => dispatch({ type: "menuToggle" })}>
+      <li>
+        <Button
+          className="px-4 py-2"
+          variant="ghost"
+          onClick={() => dispatch({ type: "menuToggle" })}
+        >
           <Bars3Icon />
-        </button>
+        </Button>
       </li>
     </ul>
   );
