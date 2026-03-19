@@ -15,7 +15,7 @@ export default function ProductCard({ product }: ProductCard) {
       key={product.id}
       className="overflow-hidden border border-neutral-100 bg-white shadow-sm transition-shadow hover:shadow-md"
     >
-      <Link to={`/product/${product.id}`}>
+      <Link to={`/product/${product.slug}`}>
         {/* Image */}
         <div className="aspect-3/4 w-full overflow-hidden bg-neutral-100">
           <img

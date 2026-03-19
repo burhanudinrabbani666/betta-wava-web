@@ -1,5 +1,5 @@
 import { Link } from "react-router";
 
 export default function Logo() {
-  return <Link to={"/"}>Logo</Link>;
+  return <Link to={"/"}>Betta Wava</Link>;
 }

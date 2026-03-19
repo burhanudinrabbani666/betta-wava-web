@@ -1,5 +1,4 @@
 import { useParams } from "react-router";
-import { useHeader } from "@/context/header/useheader";
 import {
   Carousel,
   CarouselContent,
@@ -13,24 +12,23 @@ import { Separator } from "@/components/ui/separator";
 import { ShoppingBag, Share2, RotateCcw, Shield } from "lucide-react";
 import { useState } from "react";
 import ItemCounter from "@/components/ui/item-counter";
-import type { ProductData } from "@/context/header/header-provider";
+import useGetProductBySlug from "@/module/products/useGetProductBySlug";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function Product() {
-  const { productId } = useParams();
+  const { slug } = useParams();
   const [itemCount, setItemCount] = useState(1);
+  const { product, isPending, error } = useGetProductBySlug(slug);
 
-  const { products, dispatch } = useHeader();
-
-  const product = products?.find((product) => product.id === productId);
-
-  //   const checkProduct = cartTemp?.products.find((product) => product.id === productId,);
-
-  if (!product)
+  if (error) return;
+  if (isPending) return <Spinner />;
+  if (!product) {
     return (
-      <div className="text-muted-foreground flex h-screen items-center justify-center text-sm tracking-widest uppercase">
-        Product not found
+      <div className="flex items-center justify-center">
+        <span>Product not found!</span>
       </div>
     );
+  }
 
   const isInStock = product.stockLevel > 0;
 
@@ -40,22 +38,6 @@ export default function Product() {
 
   function handleDec() {
     setItemCount((count) => count - 1);
-  }
-
-  function handleAddToCart() {
-    if (!product) return;
-
-    const { id, name, thumbnailUrl, price } = product;
-
-    const productToCart: ProductData = {
-      id,
-      name,
-      thumbnailUrl,
-      price,
-      quantity: itemCount,
-    };
-
-    dispatch({ type: "cart", payload: productToCart });
   }
 
   return (
@@ -154,7 +136,7 @@ export default function Product() {
             <Button
               className="h-12 w-full rounded-none bg-black text-xs tracking-widest text-white uppercase hover:bg-neutral-800"
               disabled={!isInStock}
-              onClick={handleAddToCart}
+              // onClick={handleAddToCart}
             >
               <ShoppingBag className="mr-2 h-4 w-4" />
               Add to Bag

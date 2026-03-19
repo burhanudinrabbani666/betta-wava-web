@@ -23,5 +23,3 @@ export type IntialStateType = {
 export type ActionType =
   | { type: "searchToggle" }
   | { type: "menuToggle" }
-  | { type: "products"; payload: ProductsSchema | undefined }
-  | { type: "cart"; payload: ProductData };
