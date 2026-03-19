@@ -1,5 +1,3 @@
-import type { ProductsSchema } from "@/module/schema";
-
 export type ProductData = {
   id: string;
   name: string;
@@ -16,10 +14,6 @@ export type CartTemp = {
 export type IntialStateType = {
   searchOpen: boolean;
   menuOpen: boolean;
-  products: ProductsSchema | undefined;
-  cartTemp: CartTemp | undefined;
 };
 
-export type ActionType =
-  | { type: "searchToggle" }
-  | { type: "menuToggle" }
+export type ActionType = { type: "searchToggle" } | { type: "menuToggle" };

@@ -2,13 +2,9 @@ import { useReducer } from "react";
 import { HeaderContext } from "./header-context";
 import type { ActionType, IntialStateType } from "../schema";
 
-
-
 const intialState: IntialStateType = {
   searchOpen: false,
   menuOpen: false,
-  products: [],
-  cartTemp: undefined,
 };
 
 function reducer(state: IntialStateType, action: ActionType): IntialStateType {
@@ -19,7 +15,6 @@ function reducer(state: IntialStateType, action: ActionType): IntialStateType {
     case "menuToggle":
       return { ...state, menuOpen: !state.menuOpen };
 
-
     default:
       throw new Error("Unknown Action");
   }
@@ -27,12 +22,10 @@ function reducer(state: IntialStateType, action: ActionType): IntialStateType {
 
 export function HeaderProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, intialState);
-  const { searchOpen, menuOpen, products, cartTemp } = state;
+  const { searchOpen, menuOpen } = state;
 
   return (
-    <HeaderContext.Provider
-      value={{ searchOpen, menuOpen, dispatch, products, cartTemp }}
-    >
+    <HeaderContext.Provider value={{ searchOpen, menuOpen, dispatch }}>
       {children}
     </HeaderContext.Provider>
   );

@@ -2,11 +2,7 @@ import { cn, tagColor } from "@/lib/utils";
 import type { ProductSchema } from "@/module/schema";
 import { Link } from "react-router";
 
-type ProductCard = {
-  product: ProductSchema;
-};
-
-export default function ProductCard({ product }: ProductCard) {
+export default function ProductCard({ product }: { product: ProductSchema }) {
   if (!product || !tagColor) return null;
 
   return (
