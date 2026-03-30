@@ -14,13 +14,31 @@ export default function Homepage() {
   useEffect(() => {
     if (!api) return;
 
+    const COOLDOWN_MS = 800; // adjust to match your transition duration
+    let isScrolling = false;
+
+    const scroll = (direction: "next" | "prev") => {
+      if (isScrolling) return;
+      isScrolling = true;
+
+      if (direction === "next") {
+        api.scrollNext();
+      } else {
+        api.scrollPrev();
+      }
+
+      setTimeout(() => {
+        isScrolling = false;
+      }, COOLDOWN_MS);
+    };
+
     // Mouse wheel scroll
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       if (e.deltaY > 0) {
-        api.scrollNext();
+        scroll("next");
       } else {
-        api.scrollPrev();
+        scroll("prev");
       }
     };
 
@@ -28,11 +46,11 @@ export default function Homepage() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowDown") {
         e.preventDefault();
-        api.scrollNext();
+        scroll("next");
       }
       if (e.key === "ArrowUp") {
         e.preventDefault();
-        api.scrollPrev();
+        scroll("prev");
       }
     };
 
@@ -40,7 +58,6 @@ export default function Homepage() {
     container.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("keydown", handleKeyDown);
 
-    // Cleaning
     return () => {
       container.removeEventListener("wheel", handleWheel);
       window.removeEventListener("keydown", handleKeyDown);
