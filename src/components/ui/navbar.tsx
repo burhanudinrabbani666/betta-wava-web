@@ -13,7 +13,6 @@ export default function Navbar() {
     <ul className="flex items-center">
       <li>
         <Button
-          className="px-4 py-2"
           variant="ghost"
           onClick={() => dispatch({ type: "searchToggle" })}
         >
@@ -22,20 +21,19 @@ export default function Navbar() {
       </li>
 
       <NavLink to={"/member"}>
-        <Button className="px-4 py-2" variant="ghost">
+        <Button variant="ghost">
           <UserIcon />
         </Button>
       </NavLink>
 
       <NavLink to={"/cart"}>
-        <Button className="px-4 py-2" variant="ghost">
+        <Button variant="ghost">
           <ShoppingBagIcon />
         </Button>
       </NavLink>
 
       <li>
         <Button
-          className="px-4 py-2"
           variant="ghost"
           onClick={() => dispatch({ type: "menuToggle" })}
         >
