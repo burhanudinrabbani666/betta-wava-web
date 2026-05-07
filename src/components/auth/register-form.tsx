@@ -13,9 +13,15 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import type React from "react";
 import { Link } from "react-router";
 
-export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
+export function RegisterForm({
+  handleSubmit,
+  ...props
+}: React.ComponentProps<typeof Card> & {
+  handleSubmit: (event: React.SubmitEvent) => void;
+}) {
   return (
     <Card {...props}>
       <CardHeader>
@@ -25,7 +31,7 @@ export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
+        <form onSubmit={handleSubmit}>
           <FieldGroup>
             <Field>
               <FieldLabel htmlFor="firstName">First Name</FieldLabel>
@@ -70,9 +76,6 @@ export function RegisterForm({ ...props }: React.ComponentProps<typeof Card>) {
             <Field>
               <FieldLabel htmlFor="password">Password</FieldLabel>
               <Input name="password" id="password" type="password" required />
-              <FieldDescription>
-                Must be at least 8 characters long.
-              </FieldDescription>
             </Field>
             <FieldGroup>
               <Field>

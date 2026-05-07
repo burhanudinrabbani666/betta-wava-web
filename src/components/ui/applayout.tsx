@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import Header from "./header";
 import Search from "./search";
 import ProductNav from "./product-nav";
+import { Toaster } from "sonner";
 
 export default function Applayout() {
   return (
@@ -12,6 +13,7 @@ export default function Applayout() {
         <Header />
         <main>
           <Outlet />
+          <Toaster />
         </main>
       </>
     </div>
