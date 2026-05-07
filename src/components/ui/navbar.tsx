@@ -20,7 +20,7 @@ export default function Navbar() {
         </Button>
       </li>
 
-      <NavLink to={"/member"}>
+      <NavLink to={"/login"}>
         <Button variant="ghost">
           <UserIcon />
         </Button>
