@@ -5,7 +5,7 @@ export default function useGetProductsByVariant(slug: string | undefined) {
     data: products,
     isPending,
     error,
-  } = $api.useQuery("get", "/variant/{slug}", {
+  } = $api.useQuery("get", "/variants/{slug}", {
     params: { path: { slug: slug! } },
   });
 
