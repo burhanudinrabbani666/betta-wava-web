@@ -7,6 +7,19 @@ import Cart from "./pages/cart";
 import Products from "./pages/products";
 import Register from "./pages/register";
 import Login from "./components/ui/login";
+import { Dashboard } from "./pages/dashboard";
+
+/*
+  TODO:
+  - Create Protected Route for:
+    - Dashboard
+    - Product
+    - Cart
+    - Account
+
+  - Create Search Logic
+
+*/
 
 export default function App() {
   return (
@@ -18,6 +31,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/product/:slug" element={<Product />} />
           <Route path="/variant/:slug" element={<Variant />} />
           {/* <Route path="/search" element={<Homepage />} /> */}

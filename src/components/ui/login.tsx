@@ -2,8 +2,6 @@ import type React from "react";
 import { LoginForm } from "../auth/login-form";
 import { $api } from "@/module/common/api";
 import { useNavigate } from "react-router";
-import { useCookies } from "react-cookie";
-import type { CookiesValues } from "@/module/auth/type";
 import { useAuth } from "@/module/auth/hooks";
 
 type LoginData = {
@@ -29,7 +27,7 @@ export default function Login() {
         onSuccess: (responsesLogin) => {
           const { token } = responsesLogin;
           setToken(token);
-          navigate("/products");
+          navigate("/dashboard");
         },
       },
     );
