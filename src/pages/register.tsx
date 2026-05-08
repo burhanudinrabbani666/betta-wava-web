@@ -29,8 +29,7 @@ export default function Register() {
     };
 
     if (Object.values(userRegisterDataTrim).includes("")) {
-      console.log("Input Not valid");
-      return;
+      return toast.warning("Input Not Valid", { position: "top-center" });
     }
 
     mutate(
