@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import {
   Carousel,
   CarouselContent,
@@ -14,12 +14,18 @@ import { useState } from "react";
 import ItemCounter from "@/components/ui/item-counter";
 import useGetProductBySlug from "@/module/products/useGetProductBySlug";
 import { Spinner } from "@/components/ui/spinner";
+import { useUser } from "@/module/auth/hooks";
 
 export default function Product() {
   const { slug } = useParams();
   const [itemCount, setItemCount] = useState(1);
   const { product, isPending, error } = useGetProductBySlug(slug);
+  const { user } = useUser();
+  const navigate = useNavigate();
 
+  if (!user) {
+    navigate("/login");
+  }
   if (error) return;
   if (isPending) return <Spinner />;
   if (!product) {

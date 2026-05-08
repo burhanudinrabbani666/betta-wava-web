@@ -5,14 +5,11 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { variant } from "@/lib/utils";
-import { useUser } from "@/module/auth/hooks";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 
 export default function Homepage() {
   const [api, setApi] = useState<CarouselApi>();
-  const { isAuthenticated, user, isPending, error } = useUser();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (!api) return;
@@ -66,13 +63,6 @@ export default function Homepage() {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [api]);
-
-  if (!isAuthenticated) {
-    navigate("/login");
-  }
-
-  if (isPending || !user) return <p>Loading User</p>;
-  if (error) return <p>Load Products Error</p>;
 
   return (
     <Carousel
