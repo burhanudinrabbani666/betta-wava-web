@@ -5,9 +5,11 @@ import { ShoppingBagIcon } from "../icons/heroicons-shopping-bag";
 import { Bars3Icon } from "../icons/heroicons-bars-3";
 import { useHeader } from "@/context/header/useheader";
 import { Button } from "@/button";
+import { useUser } from "@/module/auth/hooks";
 
 export default function Navbar() {
   const { dispatch } = useHeader();
+  const { user } = useUser();
 
   return (
     <ul className="flex items-center">
@@ -20,7 +22,7 @@ export default function Navbar() {
         </Button>
       </li>
 
-      <NavLink to={"/login"}>
+      <NavLink to={user ? "/dashboard" : "/login"}>
         <Button variant="ghost">
           <UserIcon />
         </Button>
