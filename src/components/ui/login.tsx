@@ -4,6 +4,7 @@ import { $api } from "@/module/common/api";
 import { useNavigate } from "react-router";
 import { useCookies } from "react-cookie";
 import type { CookiesValues } from "@/module/auth/type";
+import { useAuth } from "@/module/auth/hooks";
 
 type LoginData = {
   email: string;
@@ -11,8 +12,7 @@ type LoginData = {
 };
 
 export default function Login() {
-  const [_, setCookies] = useCookies<"token", CookiesValues>([]);
-
+  const { setToken } = useAuth();
   const { mutate } = $api.useMutation("post", "/auth/login");
   const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ export default function Login() {
       {
         onSuccess: (responsesLogin) => {
           const { token } = responsesLogin;
-          setCookies("token", token);
+          setToken(token);
           navigate("/products");
         },
       },
