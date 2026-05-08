@@ -10,20 +10,26 @@ export function useAuth() {
   }
 
   return {
-    token: cookies.token,
+    cookies,
     setToken,
   };
 }
 
 export function useUser() {
-  const { token } = useAuth();
+  const { cookies } = useAuth();
+
+  if (!cookies.token) {
+    return {
+      isAuthenticated: false,
+    };
+  }
 
   const {
     data: user,
     isPending,
     error,
   } = $api.useQuery("get", "/auth/me", {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${cookies.token}` },
   });
 
   if (!user || error) {
