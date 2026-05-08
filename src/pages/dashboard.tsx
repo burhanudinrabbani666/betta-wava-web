@@ -19,10 +19,11 @@ export function Dashboard() {
     );
   }
 
+  console.log(13);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#fafafa] p-6">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-[#fafafa]">
       <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
-        {/* Profile Header */}
         <div className="flex flex-col items-center text-center">
           <div className="flex h-20 w-20 items-center justify-center rounded-full bg-black text-xl font-semibold text-white">
             {user?.username?.charAt(0)?.toUpperCase() || "U"}
@@ -35,10 +36,8 @@ export function Dashboard() {
           <p className="text-sm text-gray-500">{user?.email}</p>
         </div>
 
-        {/* Divider */}
         <div className="my-6 h-px bg-gray-200" />
 
-        {/* Info Section */}
         <div className="space-y-4 text-sm">
           <div className="flex justify-between">
             <span className="text-gray-500">First Name</span>
@@ -52,7 +51,7 @@ export function Dashboard() {
 
           <div className="flex justify-between">
             <span className="text-gray-500">User ID</span>
-            <span className="max-w-[180px] truncate text-right font-medium text-black">
+            <span className="max-w-45 truncate text-right font-medium text-black">
               {user?.id}
             </span>
           </div>
